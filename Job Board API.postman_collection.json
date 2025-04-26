@@ -1,0 +1,345 @@
+{
+	"info": {
+		"_postman_id": "e5aee319-a6d1-4f94-9492-02b240bb5f2b",
+		"name": "Job Board API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32895011"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" :\"muss3ab.1994@gmail.com\",\n    \"password\" : \"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "muss3ab.1994@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "mosab",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|w7NlPb2LHyh9MBELg5j74jt5RXKTOptDd5SmgR09594b147a",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "muss3ab.1994@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "mosab",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|w7NlPb2LHyh9MBELg5j74jt5RXKTOptDd5SmgR09594b147a",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "muss3ab.1994@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "mosab",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get All Jobs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/jobs",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/jobs/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"jobs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter: Full-time jobs requiring PHP",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/jobs?filter=job_type=full-time AND languages=PHP",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"jobs"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "job_type=full-time AND languages=PHP"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter: Remote jobs with 3+ years experience",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/jobs?filter=is_remote=true AND attribute:years_experience>=3",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"jobs"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "is_remote=true AND attribute:years_experience>=3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter: Jobs requiring PHP OR JavaScript with high salary",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/jobs?filter=(languages HAS_ANY (PHP,JavaScript)) AND salary_min>=80000",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"jobs"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "(languages HAS_ANY (PHP,JavaScript)) AND salary_min>=80000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter: Senior positions in New York or Remote",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/jobs?filter=(locations IS_ANY (New York,Remote)) AND attribute:seniority_level=Senior",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"jobs"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "(locations IS_ANY (New York,Remote)) AND attribute:seniority_level=Senior"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter: Complex query with multiple conditions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/jobs?filter=(job_type=full-time AND (languages HAS_ANY (PHP,JavaScript))) AND (locations IS_ANY (New York,Remote)) AND attribute:years_experience>=3",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"jobs"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "(job_type=full-time AND (languages HAS_ANY (PHP,JavaScript))) AND (locations IS_ANY (New York,Remote)) AND attribute:years_experience>=3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000"
+		}
+	]
+}
